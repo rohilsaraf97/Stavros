@@ -1,0 +1,91 @@
+let nCount = (selector) => {
+  $(selector).each(function () {
+    $(this).animate(
+      {
+        Counter: $(this).text(),
+      },
+      {
+        // A string or number determining how long the animation will run.
+        duration: 40000,
+        // A string indicating which easing function to use for the transition.
+        easing: "swing",
+        /**
+         * A function to be called for each animated property of each animated element.
+         * This function provides an opportunity to
+         *  modify the Tween object to change the value of the property before it is set.
+         */
+        step: function (value) {
+          $(this).text(Math.ceil(value));
+        },
+      }
+    );
+  });
+};
+
+let a = 0;
+$(window).scroll(function () {
+  // The .offset() method allows us to retrieve the current position of an element  relative to the document
+  let oTop = $(".numbers").offset().top - window.innerHeight;
+  if (a == 0 && $(window).scrollTop() >= oTop) {
+    a++;
+    nCount(".rect > h1");
+  }
+});
+
+/**
+ *
+ *  sticky navigation
+ *
+ */
+
+let navbar = $(".navbar");
+
+$(window).scroll(function () {
+  // get the complete hight of window
+  let oTop = $(".section-1").offset().top - window.innerHeight;
+  if ($(window).scrollTop() >= oTop) {
+    navbar.addClass("sticky");
+  } else {
+    navbar.removeClass("sticky");
+  }
+});
+
+$(function () {
+  setNavigation();
+});
+
+if ($(".indexcheck")[0]) {
+  $("header").addClass("indexcolor");
+} else if ($(".blogcheck")[0]) {
+  $("header").addClass("blogcolor");
+} else if ($(".composecheck")[0]) {
+  $("header").addClass("composecolor");
+} else if ($(".checkoutcheck")[0]) {
+  $("header").addClass("checkoutcolor");
+} else if ($(".postcheck")[0]) {
+  $("header").addClass("postcolor");
+} else if ($(".aboutcheck")[0]) {
+  $("header").addClass("aboutcolor");
+} else {
+  $("header").addClass("indexcolor");
+}
+
+$(window).resize(function () {
+  $("body").css("padding-top", parseInt($("#main-navbar").css("height")) + 10);
+});
+
+$(window).load(function () {
+  $("body").css("padding-top", parseInt($("#main-navbar").css("height")) + 10);
+});
+// function setNavigation() {
+//   var path = window.location.pathname;
+//   path = path.replace(/\/$/, "");
+//   path = decodeURIComponent(path);
+
+//   $(".navbar-nav a").each(function () {
+//     var href = $(this).attr("href");
+//     if (path.substring(0, href.length) === href) {
+//       $(this).closest("li").addClass("active");
+//     }
+//   });
+// }

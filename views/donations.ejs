@@ -1,0 +1,73 @@
+<%- include("partials/header") %>
+    <div class="aboutcheck"></div>
+    <div class="overlay"></div>
+    <div class="about container-fluid text-center">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1>Donations</h1>
+                    <h2>The total donations made are: ₹ <%= totalamount.total %>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-11 col-md-10 mx-auto">
+                <div class="donheading px-3 py-3" style="background-color: #890596;">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h3 class="post-title" style="color: white;">
+                                Donor Name
+                            </h3>
+                        </div>
+                        <div class="col-lg-4">
+                            <h3 class="post-title text-centre" style="color: white;">
+                                Date Of Donation
+                            </h3>
+                        </div>
+                        <div class=" col-lg-4">
+                            <h3 class="post-subtitle text-right" style="color: white;">
+                                Donation Amount
+                            </h3>
+
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <% donations.forEach(function(donor){ %>
+                    <div class="post-preview">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h2 class="post-title">
+                                    <%= donor.fname %>
+                                        <%= donor.lname %>
+                                </h2>
+                            </div>
+                            <div class="col-lg-4">
+                                <h4 class="post-title text-muted text-centre">
+                                    <%= donor.date %>
+                                </h4>
+                            </div>
+                            <div class=" col-lg-4">
+                                <h2 class="post-subtitle text-right">
+                                    ₹ <%= donor.amount %>
+                                </h2>
+
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <% }) %>
+                        <!-- Pager -->
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <%- include("partials/footer") %>

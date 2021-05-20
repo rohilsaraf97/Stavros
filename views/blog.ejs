@@ -1,0 +1,53 @@
+<%- include("partials/header") %>
+  <div class="blogcheck"></div>
+  <div class="overlay"></div>
+  <div class="blog container-fluid text-center">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Love is our Motto</h1>
+          <p>A blog theme by Team Stavros</p>
+          <a href="/compose">
+            <button class="btn btn-primary px-5 py-3">
+              <h3>WRITE A BLOG</h3>
+            </button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </header>
+  <br>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+
+
+
+        <% posts.forEach(function(post){ %>
+          <div class="post-preview">
+            <a href="/post/<%= post._id %>">
+              <h2 class="post-title">
+                <%= post.posttitle %>
+              </h2>
+              <h3 class="post-subtitle">
+                <%= post.postbody.substring(0,100)+" ..." %>
+              </h3>
+            </a>
+            <p class="post-meta">Posted by <%= post.fname %>
+                <%= post.lname %>
+                  on <%= post.date%>
+            </p>
+          </div>
+          <hr>
+          <% }) %>
+            <!-- Pager -->
+            <div class="clearfix">
+              <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+            </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <%- include("partials/footer") %>
