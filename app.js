@@ -1,5 +1,5 @@
 // jshint esversion:6
-
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
@@ -10,18 +10,15 @@ const ejs = require("ejs");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "stavrosindia2021@gmail.com",
-    pass: "stavros123",
+    user: process.env.ADMIN_EMAIL,
+    pass: process.env.ADMIN_PW,
   },
 });
 
-mongoose.connect(
-  "mongodb+srv://admin-rohil:rohil123@cluster0.auzw2.mongodb.net/StavrosnewDB?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs", "partials");
