@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 });
 
 mongoose.connect(
-  "mongodb+srv://admin-rohil:rohil123@cluster0.auzw2.mongodb.net/StavrosDB?retryWrites=true&w=majority",
+  "mongodb+srv://admin-rohil:rohil123@cluster0.auzw2.mongodb.net/StavrosnewDB?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
