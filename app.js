@@ -226,7 +226,7 @@ app.post("/checkout", function (req, res) {
         console.log(err);
       } else {
         var mailOptions = {
-          from: ADMIN_EMAIL,
+          from: process.env.ADMIN_EMAIL,
           to: req.body.email,
           subject: "Thankyou for your Donation!",
           html: data,
